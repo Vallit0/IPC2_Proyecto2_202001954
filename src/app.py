@@ -10,7 +10,7 @@ from models.city import listaCiudades
 from helpers import submenu
 if __name__ == '__main__':
     while True:
-
+        print(Fore.LIGHTMAGENTA_EX + 'hie')
         print("=============Menu =======================")
         print("|  1. Cargar Configuraciones del Sistema |")
         print("|  2. Salir                              |")
@@ -28,24 +28,26 @@ if __name__ == '__main__':
 
             cities = analyzeXML(file, ciudades)
             print("")
+            print("Lectura Terminada")
             print(Fore.GREEN + "                                                    Lectura terminada                  ")
             print(Style.RESET_ALL)
             print("")
             print("")
             print("-----------------------------------------------------")
-            print("-----------ESCRIBA EL NOMBRE DE LA CIUDAD -----------")
+            print("-----------ESCRIBA EL NUMERO DE LA CIUDAD  -----------")
             print("-----------------------------------------------------")
             cities.print()
 
-            patternName = input(">>")
-            patternName = str(patternName.replace(" ", '').replace("\n", ''))
-            #if pisos.isIn(patternName):
-                #Enviar Pisos a la funcion
-                #print("Se ha encontrado el piso")
-                #submenu(patternName, pisos)
-            #else:
-                #print("El piso no ha sido cargado")
-                #pass
+            cityName = input(">>")
+            cityName = str(cityName.replace(" ", '').replace("\n", ''))
+            if cities.searchByIndex(cityName) != False:
+                #Enviar las ciudades a la MENU
+                cityRealName = cities.searchByIndex(cityName).name
+                print("Se ha encontrado la ciudad")
+                submenu(cityRealName, cities)
+            else:
+                print("El piso no ha sido cargado")
+                pass
 
 
             #First

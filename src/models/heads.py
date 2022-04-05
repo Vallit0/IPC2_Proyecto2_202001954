@@ -1,3 +1,5 @@
+from colorama import Fore, Style, Back, init
+init(convert=True)
 class Nodo_Encabezado():
     def __init__(self, id):
         self.id : int = id
