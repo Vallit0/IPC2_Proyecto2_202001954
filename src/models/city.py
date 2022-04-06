@@ -24,7 +24,7 @@ class listaCiudades:
             self.head = firstNode
         elif self.head != None:
             copiaHead = self.head
-            cont = 0
+            cont = 2
             while copiaHead.next != None:
                 cont += 1
                 copiaHead = copiaHead.next
@@ -67,7 +67,7 @@ class listaCiudades:
         counter = 0
         while head != None:
             counter += 1
-            print(counter, '. ', head.name, end='->')
+            print(head.counter, '. ', head.name, end='->')
             print()
             print(Style.RESET_ALL)
             head = head.next

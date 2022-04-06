@@ -10,7 +10,7 @@ from models.city import listaCiudades
 from helpers import submenu
 if __name__ == '__main__':
     while True:
-        print(Fore.LIGHTMAGENTA_EX + 'hie')
+
         print("=============Menu =======================")
         print("|  1. Cargar Configuraciones del Sistema |")
         print("|  2. Salir                              |")

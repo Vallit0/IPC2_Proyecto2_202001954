@@ -67,11 +67,12 @@ class Lista_Encabezado():
                 return tmp
             tmp = tmp.siguiente
         return None
-    def lenght(self):
+    def length(self):
         tmp = self.primero
         len = 0
         while tmp != None:
             len += 1
+            tmp = tmp.siguiente
         return len
 
 # -----------------------------Codigo de MATRIZ DISPERSA ----------------
@@ -90,6 +91,7 @@ class Nodo_Interno():  # Nodos ortogonales
         self.CivilUnitIndex = None
         self.entranceUnitIndex = None
         self.visited = False
+        self.resourceUnit = None
 
 
 
@@ -606,7 +608,13 @@ class MatrizDispersa():
                     print(Back.LIGHTWHITE_EX +  'M', end="->")
                     graphviz += '<TD border="3"  bgcolor="red">' + str(aux2.caracter) + '</TD>'
                     #print(Style.RESET_ALL, end="")
+                elif aux2.caracter == 'V':
+                    print(Back.LIGHTWHITE_EX +  'M', end="->")
+                    graphviz += '<TD border="3"  bgcolor="yellow">' + str(aux2.caracter) + '</TD>'
 
+                elif aux2.caracter == 'D':
+                    print(Back.LIGHTWHITE_EX +  'M', end="->")
+                    graphviz += '<TD border="3"  bgcolor="purple">' + str(aux2.caracter) + '</TD>'
 
                 #print(aux2.caracter, end="->")
 
@@ -662,11 +670,47 @@ class MatrizDispersa():
         if cont == 0:
             return False
 
+    def printResourceUnits(self):
+
+
+
+        aux = self.filas.primero
+        aux2 = aux.acceso
+        cont = 1
+        posX = 1
+        posY = 1
+        while aux != None:
+            aux2: Nodo_Interno
+            aux2.CivilUnitsIndex = 0
+            while aux2 != None:
+                if aux2.caracter == 'R':
+                    aux2.resourceUnit = cont
+
+                    print("-----Unidad Recurso: " + str(cont)+ "-----")
+                    print("fila >> " + str(aux2.coordenadaY))
+                    print("columna >> "+ str(aux2.coordenadaX))
+                    print("--------------------------------")
+                    cont += 1
+
+
+
+
+                aux2 = aux2.derecha
+                posX +=1
+            aux = aux.siguiente
+            posY += 1
+            if aux != None:
+                aux2 = aux.acceso
+
+        if cont == 0:
+            return False
+
     def printEntranceUnits(self):
 
 
 
         aux = self.filas.primero
+        aux2: Nodo_Interno
         aux2 = aux.acceso
         cont = 0
         posX = 1
@@ -679,7 +723,7 @@ class MatrizDispersa():
                     cont += 1
                     aux2.entranceUnitIndex = cont
 
-                    print("-----Entrada: " + str(cont) + "-----")
+                    print("-----Entrada: " + str(aux2.entranceUnitIndex) + "-----")
                     print("fila >> " + str(aux2.coordenadaY))
                     print("columna >> " + str(aux2.coordenadaX))
                     print("--------------------------------")
@@ -718,6 +762,31 @@ class MatrizDispersa():
         if cont == 0:
             return False
 
+    def searchRescueUnits(self):
+        aux = self.filas.primero
+        aux2 = aux.acceso
+        cont = 0
+        posX = 1
+        posY = 1
+        while aux != None:
+
+
+            while aux2 != None:
+                if aux2.caracter == 'R':
+                    cont += 1
+                    aux2:Nodo_Interno
+                    aux2.resourceUnit = cont
+
+                aux2 = aux2.derecha
+                posX += 1
+            aux = aux.siguiente
+            posY += 1
+            if aux != None:
+                aux2 = aux.acceso
+
+        if cont == 0:
+            return False
+
     def searchByIndexType(self, index, type):
         aux = self.filas.primero
         aux2 = aux.acceso
@@ -745,6 +814,58 @@ class MatrizDispersa():
 
         print("")
 
+    def searchByIndexTypeE(self, index, type):
+        aux = self.filas.primero
+        aux2 = aux.acceso
+        cont = 0
+        posX = 1
+        posY = 1
+        while aux != None:
+
+            contador = 0
+            while aux2 != None:
+                if aux2.caracter == type.upper() and aux2.entranceUnitIndex == index:
+                    return aux2
+                    cont += 1
+
+                aux2 = aux2.derecha
+                posX += 1
+            aux = aux.siguiente
+            posY += 1
+            if aux != None:
+                aux2 = aux.acceso
+
+        if cont == 0:
+            return False
+
+
+        print("")
+    def searchByIndexTypeR(self, index, type):
+        aux = self.filas.primero
+        aux2 = aux.acceso
+        cont = 0
+        posX = 1
+        posY = 1
+        while aux != None:
+
+            contador = 0
+            while aux2 != None:
+                if aux2.caracter == type.upper() and aux2.resourceUnit == index:
+                    return aux2
+                    cont += 1
+
+                aux2 = aux2.derecha
+                posX += 1
+            aux = aux.siguiente
+            posY += 1
+            if aux != None:
+                aux2 = aux.acceso
+
+        if cont == 0:
+            return False
+
+
+        print("")
     def searchEntranceUnits(self):
         aux = self.filas.primero
         aux2 = aux.acceso
@@ -777,7 +898,7 @@ class MatrizDispersa():
         while aux != None:
 
             while aux2 != None:
-                if aux2.coordenadaY == int(Y) and aux2.coordenadaX == int(X):
+                if int(aux2.coordenadaY) == int(Y) and int(aux2.coordenadaX) == int(X):
                     cont += 1
                     return aux2
 

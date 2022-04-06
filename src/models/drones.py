@@ -71,11 +71,11 @@ class droneList:
             else:
                 head = head.next
 
-    def printFigher(self):
+    def printFighter(self):
         head = self.head
         while head != None:
             if head.type.upper() == 'CHAPINFIGHTER':
-                print(head.counter, '.', head.name)
+                print(head.index, '.', head.name)
                 head = head.next
             else:
                 head = head.next
