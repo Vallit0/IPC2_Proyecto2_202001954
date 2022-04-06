@@ -34,6 +34,7 @@ def analyzeXML(filename, listOfCities: listaCiudades):
         row += 1
         cityData = city.getElementsByTagName("nombre")[0]
         cityName = cityData.firstChild.data
+        print(Style.RESET_ALL)
         print("")
         print("----------CIUDAD " + str(cityData.firstChild.data) + '--------')
         print('Nombre Ciudad', cityName)
@@ -48,7 +49,7 @@ def analyzeXML(filename, listOfCities: listaCiudades):
         matrix: MatrizDispersa
 
         matrix = MatrizDispersa(row)
-
+        print(Fore.MAGENTA)
         print("============ UNIDADES militares " + str(cityData.firstChild.data) + '=======')
         units = militaryUnits()
         unidades = city.getElementsByTagName('unidadMilitar')
@@ -72,6 +73,7 @@ def analyzeXML(filename, listOfCities: listaCiudades):
         print("")
         #print("======= Lista de Unidades === ")
         #units.print()
+        print(Fore.CYAN)
         print("============ FILAS de Ciudad " + str(cityData.firstChild.data) + '=======')
         for i in range(len(filas)):
             #Crear una matriz
@@ -136,6 +138,8 @@ def analyzeXML(filename, listOfCities: listaCiudades):
                     matrix.graficarDot('Matriz1')
                     posX += 1
             rowPatterns += 1
+
+        print(Style.RESET_ALL)
 
 
         #print('TERMINO lectura de FILAS')

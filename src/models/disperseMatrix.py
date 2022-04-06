@@ -596,11 +596,11 @@ class MatrizDispersa():
                     #print(Style.RESET_ALL, end="")
                     graphviz += '<TD border="3"  bgcolor="green">' + str(aux2.caracter) + '</TD>'
                 elif aux2.caracter == 'C':
-                    print(Back.BLUE +  'C', end="->")
+                    print(Back.LIGHTBLUE_EX +  'C', end="->")
                     #print(Style.RESET_ALL, end="")
                     graphviz += '<TD border="3"  bgcolor="grey">' + str(aux2.caracter) + '</TD>'
                 elif aux2.caracter == 'R':
-                    print(Back.LIGHTWHITE_EX +  'R', end="->")
+                    print(Back.BLUE +  'R', end="->")
                     graphviz += '<TD border="3"  bgcolor="blue">' + str(aux2.caracter) + '</TD>'
                     #print(Style.RESET_ALL, end="")
 
@@ -609,11 +609,11 @@ class MatrizDispersa():
                     graphviz += '<TD border="3"  bgcolor="red">' + str(aux2.caracter) + '</TD>'
                     #print(Style.RESET_ALL, end="")
                 elif aux2.caracter == 'V':
-                    print(Back.LIGHTWHITE_EX +  'M', end="->")
+                    print(Back.YELLOW +  'M', end="->")
                     graphviz += '<TD border="3"  bgcolor="yellow">' + str(aux2.caracter) + '</TD>'
 
                 elif aux2.caracter == 'D':
-                    print(Back.LIGHTWHITE_EX +  'M', end="->")
+                    print(Back.LIGHTRED +  'M', end="->")
                     graphviz += '<TD border="3"  bgcolor="purple">' + str(aux2.caracter) + '</TD>'
 
                 #print(aux2.caracter, end="->")
